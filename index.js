@@ -31,7 +31,6 @@ Is this OK? (yes) yes-------------------------------
 4>npm i nodemon
 5>nodemon .\index.js
 */
-const { log } = require('console');
 const express = require('express');
 const app = express();
 
@@ -68,4 +67,4 @@ io.on('connection', (socket) => {
     });
 
 });
-setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
+
