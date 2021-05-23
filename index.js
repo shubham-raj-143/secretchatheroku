@@ -31,19 +31,19 @@ Is this OK? (yes) yes-------------------------------
 4>npm i nodemon
 5>nodemon .\index.js
 */
-const io = require('socket.io')(8000);  //This attaches with HTTP instance
-var connect = require('connect');
-var serveStatic = require('serve-static');
 
-connect().use(
-    serveStatic("../angularjs")
-).listen(5000);
-const users = {};
-
+const path = require('path');
+const express = require('express');
+const app = express();
+app.listen(process.env.PORT || 3000, function () {
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+});
 
 //"io.on" means this is socket.io instance which will listen many socket connections like if shubham has connected or shubhra has connected.
 //"socket.on" handeles what something will happen with some particular connection
-io.on('connection', socket => {
+
+const users = {};
+path.on('connection', socket => {
     socket.on('new-user-joined', name => {           //what to do,  if socket.on sends new user joined event
         console.log("New user", name);
 
