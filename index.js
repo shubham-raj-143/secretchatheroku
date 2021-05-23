@@ -32,7 +32,9 @@ Is this OK? (yes) yes-------------------------------
 5>nodemon .\index.js
 */
 const io = require('socket.io')(8000);  //This attaches with HTTP instance
-
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 3000;
 const users = {};
 
 
@@ -54,4 +56,8 @@ io.on('connection', socket => {
 
     });
 
+});
+
+app.listen(port, ()=>{
+    console.log(`listening to the port no at ${port}`);
 });
