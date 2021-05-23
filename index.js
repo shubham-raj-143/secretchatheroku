@@ -32,12 +32,53 @@ Is this OK? (yes) yes-------------------------------
 5>nodemon .\index.js
 */
 
-const path = require('path');
-const express = require('express');
-const app = express();
-app.listen(process.env.PORT || 3000, function () {
-    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-});
+var http = require('http');
+var fs = require('fs');
+var path = require('path');
+
+http.createServer(function (request, response) {
+
+    console.log('request starting for ');
+    console.log(request);
+
+    var filePath = '.' + request.url;
+    if (filePath == './')
+        filePath = './index.html';
+
+    console.log(filePath);
+    var extname = path.extname(filePath);
+    var contentType = 'html';
+    switch (extname) {
+        case '.js':
+            contentType = 'javascript';
+            break;
+        case '.css':
+            contentType = 'css';
+            break;
+    }
+
+    path.exists(filePath, function (exists) {
+
+        if (exists) {
+            fs.readFile(filePath, function (error, content) {
+                if (error) {
+                    response.writeHead(500);
+                    response.end();
+                }
+                else {
+                    response.writeHead(200, { 'Content-Type': contentType });
+                    response.end(content, 'utf-8');
+                }
+            });
+        }
+        else {
+            response.writeHead(404);
+            response.end();
+        }
+    });
+
+}).listen(process.env.PORT || 5000);
+
 
 //"io.on" means this is socket.io instance which will listen many socket connections like if shubham has connected or shubhra has connected.
 //"socket.on" handeles what something will happen with some particular connection
