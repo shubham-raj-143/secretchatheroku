@@ -39,7 +39,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static('./'));
 const http = require('http').Server(app);
 
-const io = require('socket.io')(5000);
+const io = require('socket.io')(PORT);
 
 app.get('./', (req, res)=>res.sendFile(__dirname+'./index.html'));
 
