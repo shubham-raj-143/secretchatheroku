@@ -1,0 +1,23 @@
+{
+  "name": "chatwebpage",
+  "version": "1.0.0",
+  "description": "this is a node server for our secret chat application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "spsr studios",
+  "license": "ISC",
+  "dependencies": {
+    "git": "^0.1.5",
+    "nodemon": "^2.0.7",
+    "socket.io": "^4.1.2",
+    "soket.io": "0.0.1-security"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "This is a nodeserver"
+  }
+}
