@@ -45,7 +45,7 @@ app.get('./', (req, res)=>res.sendFile(__dirname+'./index.html'));
 
 http.listen(PORT, function(){
     console.log(`listening on port ${PORT}`);
-})
+});
 
 //"io.on" means this is socket.io instance which will listen many socket connections like if shubham has connected or shubhra has connected.
 //"socket.on" handeles what something will happen with some particular connection
