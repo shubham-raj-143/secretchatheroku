@@ -31,60 +31,27 @@ Is this OK? (yes) yes-------------------------------
 4>npm i nodemon
 5>nodemon .\index.js
 */
+const { log } = require('console');
+const express = require('express');
+const app = express();
 
-var http = require('http');
-var fs = require('fs');
-var path = require('path');
+const PORT = process.env.PORT || 3000;
+app.use(express.static('./'));
+const http = require('http').Server(app);
 
-http.createServer(function (request, response) {
+const io = require('socket.io')(5000);
 
-    console.log('request starting for ');
-    console.log(request);
+app.get('./', (req, res)=>res.sendFile(__dirname+'./index.html'));
 
-    var filePath = '.' + request.url;
-    if (filePath == './')
-        filePath = './index.html';
-
-    console.log(filePath);
-    var extname = path.extname(filePath);
-    var contentType = 'html';
-    switch (extname) {
-        case '.js':
-            contentType = 'javascript';
-            break;
-        case '.css':
-            contentType = 'css';
-            break;
-    }
-
-    path.exists(filePath, function (exists) {
-
-        if (exists) {
-            fs.readFile(filePath, function (error, content) {
-                if (error) {
-                    response.writeHead(500);
-                    response.end();
-                }
-                else {
-                    response.writeHead(200, { 'Content-Type': contentType });
-                    response.end(content, 'utf-8');
-                }
-            });
-        }
-        else {
-            response.writeHead(404);
-            response.end();
-        }
-    });
-
-}).listen(process.env.PORT || 5000);
-
+http.listen(PORT, function(){
+    console.log(`listening on port ${PORT}`);
+})
 
 //"io.on" means this is socket.io instance which will listen many socket connections like if shubham has connected or shubhra has connected.
 //"socket.on" handeles what something will happen with some particular connection
 
 const users = {};
-path.on('connection', socket => {
+io.on('connection', (socket) => {
     socket.on('new-user-joined', name => {           //what to do,  if socket.on sends new user joined event
         console.log("New user", name);
 
@@ -101,3 +68,4 @@ path.on('connection', socket => {
     });
 
 });
+setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
