@@ -10,9 +10,6 @@
   "author": "spsr studios",
   "license": "ISC",
   "dependencies": {
-    "babel": "^6.23.0",
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
     "bufferutil": "^4.0.3",
     "cli": "^1.0.1",
     "connect": "^3.7.0",
@@ -20,8 +17,10 @@
     "git": "^0.1.5",
     "nodemon": "^2.0.7",
     "serve-static": "^1.14.1",
+    "server": "^1.0.33",
     "socket.io": "^4.1.2",
     "soket.io": "0.0.1-security",
+    "static": "^2.0.0",
     "utf-8-validate": "^5.0.5",
     "ws": "^7.4.5"
   },
