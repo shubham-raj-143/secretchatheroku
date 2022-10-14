@@ -30,6 +30,9 @@ Is this OK? (yes) yes-------------------------------
 3>npm i socket.io
 4>npm i nodemon
 5>nodemon .\index.js
+
+6.> If connection is not established then check port number running on browser is 3000 as per our project. If no then change is to 3000.
+
 */
 const express = require('express');
 const app = express();
@@ -46,7 +49,7 @@ http.listen(PORT, function(){
     console.log(`listening on port ${PORT}`);
 });
 
-//"io.on" means this is socket.io instance which will listen many socket connections like if shubham has connected or shubhra has connected.
+//"io.on" means this is socket.io instance which will listen many socket connections like if shubham has connected or aman has connected.
 //"socket.on" handeles what something will happen with some particular connection
 
 const users = {};

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "server": "nodemon server.js"
   },
   "author": "spsr studios",
   "license": "ISC",
@@ -15,16 +16,16 @@
     "connect": "^3.7.0",
     "express": "^4.17.1",
     "git": "^0.1.5",
-    "nodemon": "^2.0.7",
+    "global": "^4.4.0",
+    "nodemon": "^2.0.20",
     "serve-static": "^1.14.1",
     "server": "^1.0.33",
-    "socket.io": "^4.1.2",
+    "socket.io": "^4.5.2",
     "soket.io": "0.0.1-security",
     "static": "^2.0.0",
     "utf-8-validate": "^5.0.5",
     "ws": "^7.4.5"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "This is a nodeserver"
